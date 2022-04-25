@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table :variations, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+  t.bigint   :shop_id, null: false
+  t.bigint   :item_id, null: false
+  t.bigint   :model_id, null: false
+  t.string   :model_sku
+  t.decimal  :current_price, precision: 10, scale: 2
+  t.integer  :normal_stock, default: 0, null: false
+  t.boolean  :is_deleted, null: false, default: false
+
+  t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP' }, null: false
+  t.datetime :updated_at, default: -> { 'CURRENT_TIMESTAMP' }, null: false
+  t.index    [:shop_id],  name: :index_products_on_shop_id
+  t.index    [:item_id],  name: :index_products_on_item_id
+  t.index    [:model_id],  name: :index_products_on_model_id
+  t.index    [:model_sku],  name: :index_products_on_model_sku
+end

@@ -1,0 +1,5 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'products.schema'
+require 'store_accounts.schema'
+require 'variations.schema'
