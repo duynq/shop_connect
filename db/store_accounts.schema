@@ -1,0 +1,14 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table :store_accounts, force: :cascade, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+  t.bigint   :shop_id, null: false
+  t.string   'encrypted_token'
+  t.string   'encrypted_token_iv'
+  t.boolean  :is_deleted, null: false, default: false
+  t.datetime :token_expired_at
+  t.string   :refresh_token
+
+  t.datetime :created_at, default: -> { 'CURRENT_TIMESTAMP' }, null: false
+  t.datetime :updated_at, default: -> { 'CURRENT_TIMESTAMP' }, null: false
+  t.index    [:shop_id],  name: :index_store_accounts_on_shop_id
+end
